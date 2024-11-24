@@ -163,7 +163,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.VirtualTours.VRVirtualTours
-    Standalone: com.DefaultCompany.VRVirtualTours
+    Standalone: com.VirtualTours.VRVirtualTours
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -948,7 +948,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 71662df3-74c5-46c0-8ca0-e79d327ed452
   framebufferDepthMemorylessMode: 0

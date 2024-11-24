@@ -923,7 +923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c590c34b6f6cf74e9213f516b516e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SubmitInputAction: {fileID: -7448682177418233072, guid: abe0a4de8c40e60499a52c6fd7a641c7, type: 3}
   m_TokenInput: {fileID: 4166379875541610379}
 --- !u!1 &4166379876647122274
 GameObject:

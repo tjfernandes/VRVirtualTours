@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -281,9 +280,6 @@ PrefabInstance:
       propertyPath: m_DetectPlayerSpeaking
       value: 0
       objectReference: {fileID: 0}
-      propertyPath: m_PushToTalkInputAction
-      value: 
-      objectReference: {fileID: -1023122988726202136, guid: abe0a4de8c40e60499a52c6fd7a641c7, type: 3}
     - target: {fileID: 4881369806813467986, guid: 3a0885e96397c414f80c73ab7dc0c72d, type: 3}
       propertyPath: m_SceneFullName
       value: 
@@ -636,6 +632,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

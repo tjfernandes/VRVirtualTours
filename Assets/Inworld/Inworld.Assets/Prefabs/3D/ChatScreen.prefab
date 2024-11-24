@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Emotion: {fileID: 11400000, guid: 1950e7dba45ab6b439c74be8a0f8dd73, type: 2}
   m_Relation: {fileID: 6438212808533980119}
   m_EmoIcon: {fileID: 4048534747072681779}
+  m_Dots: {fileID: 0}
   m_Character: {fileID: 0}
 --- !u!1 &2048185186962985660
 GameObject:
