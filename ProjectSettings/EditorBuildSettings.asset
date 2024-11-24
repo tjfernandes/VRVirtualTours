@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sala de jantar.unity
     guid: 33c68af58f2b74c0f9d08ee7a5c5479e
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 6b44ed1329be54ff2be418614fa3ef0d, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 56c46f365219741a49c2ea2c98f9d87c, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: ee1a10601873b4476a7a18aeec7831cc, type: 2}
