@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Atelier.unity
+    guid: 9ea2a99e53c9b423faccd3696e0cb311
+  - enabled: 1
+    path: Assets/Scenes/Corredor e Sala do Colecionador.unity
+    guid: 3ff960237d53a4fefaaca9c8541ba139
+  - enabled: 1
+    path: "Assets/Scenes/Escrit\xF3rio.unity"
+    guid: b70725213fe68464db5768799fba3baf
+  - enabled: 1
+    path: Assets/Scenes/Quarto.unity
+    guid: 958bdb1467a4346679a507c4b46dfe5b
+  - enabled: 1
+    path: Assets/Scenes/Sala de jantar.unity
+    guid: 33c68af58f2b74c0f9d08ee7a5c5479e
+  m_configObjects: {}
