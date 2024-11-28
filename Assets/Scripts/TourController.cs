@@ -39,14 +39,19 @@ public class TourController : MonoBehaviour
         TransitionToSphere(currentSphereIndex);
     }
 
+    // Transition to the sphere at the specified index
     void TransitionToSphere(int sphereIndex)
     {       
         currentSphereIndex = sphereIndex;
-        
-        Camera.main.transform.position = tourSpheres[sphereIndex].transform.position;
 
+
+        // Set the camera position to the sphere's position
+        Vector3 cameraPosition = tourSpheres[sphereIndex].transform.position;
+        cameraPosition.y -= 1.5f;
+        Camera.main.transform.position = cameraPosition;
+
+        // Set the guider's position to the sphere's position
         Vector3 guiderPosition = guiderPositions[sphereIndex].position;
-
         guider.transform.position = guiderPosition;
 
         Camera.main.transform.LookAt(guider.transform);
@@ -56,6 +61,7 @@ public class TourController : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(directionToCamera);
         guider.transform.rotation = rotation;
 
+        // Set the background material
         UpdateActiveSphere();
     }
 

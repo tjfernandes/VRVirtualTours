@@ -18,7 +18,6 @@ public class UIManager : MonoBehaviour
 
         private GameObject chat;
         private Button askButton;
-        private TMP_InputField chatInputField;
         private Button speakButton;
         private Sprite speakButtonSprite;
         private GameObject quizPanel;
@@ -54,7 +53,6 @@ public class UIManager : MonoBehaviour
         askButton = chat.transform.Find("AskButton").GetComponent<Button>();
         quizButton = chat.transform.Find("QuizButton").GetComponent<Button>();
         stopQuizButton = chat.transform.Find("StopQuizButton").GetComponent<Button>();
-        chatInputField = chat.GetComponentInChildren<TMP_InputField>();
 
         finalScore = quizPanel.transform.Find("FinalScore").gameObject;
         confirmation = quizPanel.transform.Find("ConfirmationQuit").gameObject;
@@ -67,7 +65,6 @@ public class UIManager : MonoBehaviour
 
         // Chat event management
         askButton.onClick.AddListener(OnAskButtonClicked);
-        chatInputField.onSubmit.AddListener(delegate { OnAskButtonClicked(); });
 
         // Quiz event management
         quizButton.onClick.AddListener(() => InworldController.CurrentCharacter.SendTrigger("start_game", false));
@@ -91,6 +88,8 @@ public class UIManager : MonoBehaviour
     #region UI Event Listeners
         private void OnAskButtonClicked()
         {
+
+
             TMP_InputField chatField = chat.GetComponentInChildren<TMP_InputField>();
             string text = chatField.text;
             if (!string.IsNullOrEmpty(text))
@@ -172,7 +171,6 @@ public class UIManager : MonoBehaviour
 
         public void DeactivateChatComponents()
         {
-            if (chatInputField != null) chatInputField.interactable = false;
             if (askButton != null) askButton.interactable = false;
             if (speakButton != null)
             {
@@ -188,7 +186,6 @@ public class UIManager : MonoBehaviour
 
         public void ActivateChatComponents()
         {
-            if (chatInputField != null) chatInputField.interactable = true; 
             if (askButton != null) askButton.interactable = true;
             if (speakButton != null) speakButton.interactable = true;
             if (quizButton != null && stateManager.currentState != stateManager.gameState) quizButton.interactable = true;

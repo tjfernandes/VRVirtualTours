@@ -11,6 +11,13 @@
         "com.unity.inputsystem": "1.7.0"
       }
     },
+    "com.meta.xr.sdk.core": {
+      "version": "71.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -347,7 +354,7 @@
     },
     "com.unity.xr.openxr": {
       "version": "1.13.1",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.inputsystem": "1.6.3",

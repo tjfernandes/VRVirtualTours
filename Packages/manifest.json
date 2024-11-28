@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.inworld.unity.core": "file:/Users/tjfernandes/Documents/Tese/Dev/VRVirtualTours/Assets/Inworld/com.inworld.unity.core-3.4.2.tgz",
+    "com.meta.xr.sdk.core": "71.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "2.5.2",
     "com.unity.feature.development": "1.0.1",
@@ -13,7 +14,6 @@
     "com.unity.xr.interaction.toolkit": "2.6.3",
     "com.unity.xr.management": "4.5.0",
     "com.unity.xr.meta-openxr": "1.0.2",
-    "com.unity.xr.openxr": "1.13.1",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
