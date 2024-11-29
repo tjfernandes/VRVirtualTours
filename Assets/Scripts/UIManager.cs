@@ -4,6 +4,8 @@ using Inworld;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Microsoft.MixedReality.Toolkit.Experimental.UI;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -63,7 +65,6 @@ public class UIManager : MonoBehaviour
 
         Debug.Log("Adding event listeners");
 
-        // Chat event management
         askButton.onClick.AddListener(OnAskButtonClicked);
 
         // Quiz event management
@@ -85,13 +86,26 @@ public class UIManager : MonoBehaviour
         speakButtonSprite = speakButtonImage.sprite;
     }
 
+    
+
     #region UI Event Listeners
+
         private void OnAskButtonClicked()
         {
+            Debug.Log("Ask button clicked");    
+            NonNativeKeyboard.Instance.PresentKeyboard();
+            NonNativeKeyboard.Instance.OnTextSubmitted += HandleTextSubmitted;
+        }
 
+        private void HandleTextSubmitted(object sender, EventArgs e)
+        {
+            NonNativeKeyboard.Instance.OnTextSubmitted -= HandleTextSubmitted; // Unsubscribe to avoid multiple subscriptions
+            OnTextSubmitted(NonNativeKeyboard.Instance.InputField.text);
+        }
 
-            TMP_InputField chatField = chat.GetComponentInChildren<TMP_InputField>();
-            string text = chatField.text;
+        private void OnTextSubmitted(string text)
+        {
+            Debug.Log("Text submitted: " + text);   
             if (!string.IsNullOrEmpty(text))
             {
                     Debug.Log("Inworld Instance: " + InworldController.Instance);
@@ -114,7 +128,7 @@ public class UIManager : MonoBehaviour
                 {
                     Debug.LogError("InworldController.Instance is null");
                 }
-                chatField.text = "";
+                NonNativeKeyboard.Instance.InputField.text = "";
             }        
         }
 

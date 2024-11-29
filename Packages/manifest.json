@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "com.inworld.unity.core": "file:/Users/tjfernandes/Documents/Tese/Dev/VRVirtualTours/Assets/Inworld/com.inworld.unity.core-3.4.2.tgz",
-    "com.meta.xr.sdk.core": "71.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "2.5.2",
     "com.unity.feature.development": "1.0.1",
