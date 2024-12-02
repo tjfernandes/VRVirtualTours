@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     private QuizController quizController;
 
     #region UI elements
-        public GameObject canvas;
+        public GameObject UICanvas;
         public GameObject map;
         public GameObject guider;
         public GameObject bubbleChatPanel;
@@ -48,10 +48,10 @@ public class UIManager : MonoBehaviour
         quizController = GetComponent<QuizController>();
 
         // UI elements
-        speakButton = canvas.transform.Find("SpeakButton").GetComponent<Button>();
-        chat = canvas.transform.Find("Chat").gameObject;
-        quizPanel = canvas.transform.Find("QuizPanel").gameObject;
-        mapButton = canvas.transform.Find("MapButton").GetComponent<Button>();
+        speakButton = UICanvas.transform.Find("SpeakButton").GetComponent<Button>();
+        chat = UICanvas.transform.Find("Chat").gameObject;
+        quizPanel = UICanvas.transform.Find("QuizPanel").gameObject;
+        mapButton = UICanvas.transform.Find("MapButton").GetComponent<Button>();
 
         askButton = chat.transform.Find("AskButton").GetComponent<Button>();
         quizButton = chat.transform.Find("QuizButton").GetComponent<Button>();
@@ -204,7 +204,6 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Inworld character: " + InworldController.CurrentCharacter);
                 InworldController.CurrentCharacter.SendTrigger("show_map", true);
                 map.SetActive(true);
             }

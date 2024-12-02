@@ -101,7 +101,7 @@ public class TourController : MonoBehaviour
         Debug.Log("Moving to position " + spotIndex);
 
         // Set the skybox to the new spot's background
-        //RenderSettings.skybox = backgrounds[spotIndex];
+        RenderSettings.skybox = backgrounds[spotIndex];
 
         // set the active spot and deactivate the others
         for (int i = 0; i < spots.Length; i++)
