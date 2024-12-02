@@ -13,9 +13,6 @@ public class MapControlller : MonoBehaviour
     public ScriptableObject[] sceneGameDatas;
     public Sprite[] sceneSprites;
 
-    private int numberOfColumns = 3; // Number of columns for the grid layout
-    private float spacing = 50f; // Spacing value between each panel
-
     void Start()
     {
         ListAreas();
@@ -24,8 +21,17 @@ public class MapControlller : MonoBehaviour
 
     void ListAreas()
     {
+        GridLayoutGroup gridLayout = listParent.GetComponent<GridLayoutGroup>();
+        if (gridLayout != null)
+        {
+            // Set padding (left, right, top, bottom)
+            gridLayout.padding = new RectOffset(100, 100, 100, 100);
+
+            // Set spacing (x, y)
+            gridLayout.spacing = new Vector2(150, 200);
+        }
+
         int totalPanels = SceneManager.sceneCountInBuildSettings;
-        int numberOfRows = Mathf.CeilToInt((float)totalPanels / numberOfColumns);
 
         for (int i = 0; i < totalPanels; i++)
         {
@@ -37,13 +43,6 @@ public class MapControlller : MonoBehaviour
             // Instantiate the panel object with listParent as its parent
             GameObject panelObj = Instantiate(scenePanelPrefab, listParent, false);
 
-            // Calculate the position based on the index, number of columns, and spacing
-            int row = i / numberOfColumns;
-            int column = i % numberOfColumns;
-            float xPos = column * (scenePanelPrefab.GetComponent<RectTransform>().rect.width + spacing);
-            float yPos = -row * scenePanelPrefab.GetComponent<RectTransform>().rect.height;
-            panelObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
-
             // Set the text and image
             TMP_Text textComponent = panelObj.GetComponentInChildren<TMP_Text>();
             if (textComponent != null)
@@ -54,17 +53,7 @@ public class MapControlller : MonoBehaviour
             Image imageComponent = panelObj.GetComponentInChildren<Image>();
             if (imageComponent != null)
             {
-                Sprite originalSprite = imageComponent.sprite;
                 imageComponent.sprite = sceneSprite;
-
-                // Ensure the image fits inside the original imageComponent sprite and maintains its size
-                AspectRatioFitter aspectRatioFitter = imageComponent.GetComponent<AspectRatioFitter>();
-                if (aspectRatioFitter == null)
-                {
-                    aspectRatioFitter = imageComponent.gameObject.AddComponent<AspectRatioFitter>();
-                }
-            aspectRatioFitter.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
-            aspectRatioFitter.aspectRatio = originalSprite.rect.width / originalSprite.rect.height;
             }
 
             panelObj.name = sceneName + " Panel";

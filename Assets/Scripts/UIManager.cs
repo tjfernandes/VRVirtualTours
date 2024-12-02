@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
 
     #region UI elements
         public GameObject canvas;
+        public GameObject map;
         public GameObject bubbleChatPanel;
         public GameObject bubbleRight;
 
@@ -27,7 +28,6 @@ public class UIManager : MonoBehaviour
         private Button stopQuizButton;
         private GameObject finalScore;
         private Button mapButton;
-        private GameObject map;
         private GameObject confirmation;
         private Button yesButton;
         private Button noButton;
@@ -50,7 +50,6 @@ public class UIManager : MonoBehaviour
         chat = canvas.transform.Find("Chat").gameObject;
         quizPanel = canvas.transform.Find("QuizPanel").gameObject;
         mapButton = canvas.transform.Find("MapButton").GetComponent<Button>();
-        map = canvas.transform.Find("Map").gameObject;
 
         askButton = chat.transform.Find("AskButton").GetComponent<Button>();
         quizButton = chat.transform.Find("QuizButton").GetComponent<Button>();
@@ -134,6 +133,7 @@ public class UIManager : MonoBehaviour
 
         private void OnSpeakButtonClicked()
         {
+            Debug.Log("Speak button clicked");
             Animator speakButtonAnimator = speakButton.GetComponent<Animator>();
             Image speakButtonImage = speakButton.GetComponent<Image>();
             if (!mainController.audioCapture.activeSelf)
@@ -178,6 +178,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("Inworld character: " + InworldController.CurrentCharacter);
                 InworldController.CurrentCharacter.SendTrigger("show_map", true);
                 map.SetActive(true);
             }
