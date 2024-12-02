@@ -119,7 +119,7 @@ public class TourController : MonoBehaviour
         currentSpotIndex = spotIndex;
 
         // Set the guider's new position
-        guider.transform.position = guiderPositions[0].position;
+        guider.transform.position = guiderPositions[currentSpotIndex].position;
 
         xROrigin.transform.LookAt(guider.transform);
 
