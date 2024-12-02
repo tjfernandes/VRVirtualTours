@@ -2221,6 +2221,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1849570871}
     - target: {fileID: 9156338481435867784, guid: 4625bd3fc44c549e7871911caeb010b1, type: 3}
+      propertyPath: guider
+      value: 
+      objectReference: {fileID: 1624074754}
+    - target: {fileID: 9156338481435867784, guid: 4625bd3fc44c549e7871911caeb010b1, type: 3}
       propertyPath: bubbleRight
       value: 
       objectReference: {fileID: 9147764492347251927, guid: ce19183024b657340b5e830b1549618e, type: 3}

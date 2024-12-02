@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Microsoft.MixedReality.Toolkit.Experimental.UI;
 using System;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     #region UI elements
         public GameObject canvas;
         public GameObject map;
+        public GameObject guider;
         public GameObject bubbleChatPanel;
         public GameObject bubbleRight;
 
@@ -61,6 +63,8 @@ public class UIManager : MonoBehaviour
         yesButton = confirmation.transform.Find("YesButton").GetComponent<Button>();
         noButton = confirmation.transform.Find("NoButton").GetComponent<Button>();
 
+        AddHoverEffect(new List<GameObject> { guider.transform.Find("Armature").gameObject, askButton.gameObject, speakButton.gameObject, quizButton.gameObject, stopQuizButton.gameObject, mapButton.gameObject, yesButton.gameObject, noButton.gameObject });
+
 
         Debug.Log("Adding event listeners");
 
@@ -77,6 +81,28 @@ public class UIManager : MonoBehaviour
         // Confirmation event management 
         yesButton.onClick.AddListener(OnYesButtonClicked);
         noButton.onClick.AddListener(OnNoButtonClicked);
+    }
+
+    private void AddHoverEffect(List<GameObject> uiElements = null)
+    {
+        foreach (GameObject uiElement in uiElements)
+        {
+            Debug.Log("Adding hover effect to " + uiElement.name);
+            UIHoverManager hoverManager = uiElement.AddComponent<UIHoverManager>();
+            EventTrigger eventTrigger = uiElement.AddComponent<EventTrigger>();
+
+            // Add PointerEnter event
+            EventTrigger.Entry entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
+            entry.callback.AddListener((eventData) => hoverManager.OnPointerEnter((PointerEventData)eventData));
+            eventTrigger.triggers.Add(entry);
+
+            // Add PointerExit event
+            entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerExit };
+            entry.callback.AddListener((eventData) => hoverManager.OnPointerExit((PointerEventData)eventData));
+            eventTrigger.triggers.Add(entry);
+            
+
+        }
     }
     
     void Start()
