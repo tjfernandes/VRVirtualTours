@@ -36,6 +36,13 @@ public class MapControlller : MonoBehaviour
         for (int i = 0; i < totalPanels; i++)
         {
             string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
+            
+            // Check if the scene is not the current scene
+            if (scenePath == SceneManager.GetActiveScene().path)
+            {
+                continue;
+            }
+
             string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
 
             Sprite sceneSprite = sceneSprites[i];

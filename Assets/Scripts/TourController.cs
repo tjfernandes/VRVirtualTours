@@ -11,7 +11,7 @@ public class TourController : MonoBehaviour
     public GameObject buttonPrefab;
     public GameObject xROrigin;
     public GameObject[] spots;
-    public Material[] backgrounds;
+    public GameObject[] sceneSpheres;
 
     private Transform[] guiderPositions;
     private List<Transform>[] buttonsPositions;
@@ -68,6 +68,7 @@ public class TourController : MonoBehaviour
                 // Instantiate the button prefab at the current spot position
                 GameObject button = Instantiate(buttonPrefab, spotButtonPositions[i].position, Quaternion.identity);
 
+
                 // button should face the xrOrigin
                 button.transform.LookAt(xROrigin.transform);
                 // Set the Canvas as the parent of the button
@@ -76,7 +77,10 @@ public class TourController : MonoBehaviour
                 // Set the button's onClick event to move to the corresponding position
                 // The button's index is the digit in "MockButton" GameObject name
                 int spotIndex = Int32.Parse(spotButtonPositions[i].gameObject.name.Substring(10))-1;
-                button.GetComponent<Button>().onClick.AddListener(() => MoveToPosition(spotIndex));
+                button.GetComponent<Button>().onClick.AddListener(() => {
+                    PlayButtonClickAudio(button);
+                    MoveToPosition(spotIndex);
+                });
                 Debug.Log("Created button at position " + spotButtonPositions[i].position + " for spot " + spotIndex+1);
             }
             else
@@ -100,13 +104,10 @@ public class TourController : MonoBehaviour
     {       
         Debug.Log("Moving to position " + spotIndex);
 
-        // Set the skybox to the new spot's background
-        RenderSettings.skybox = backgrounds[spotIndex];
-
-        // set the active spot and deactivate the others
-        for (int i = 0; i < spots.Length; i++)
+        // set the active sphere and deactivate the others
+        for (int i = 0; i < sceneSpheres.Length; i++)
         {
-            spots[i].SetActive(i == spotIndex);
+            sceneSpheres[i].SetActive(i == spotIndex);
         }
 
         // Destroy the current buttons
@@ -131,5 +132,12 @@ public class TourController : MonoBehaviour
 
         // Create the buttons for the new spot
         CreateButtons(currentSpotIndex);
+    }
+
+    private void PlayButtonClickAudio(GameObject button)
+    {
+        Debug.Log("Playing button click audio for " + button.name + " with audio source " + button.GetComponent<AudioSource>().clip.name);
+        AudioSource audioSource = button.GetComponent<AudioSource>();
+        audioSource.Play();  
     }
 }

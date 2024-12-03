@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
         public GameObject guider;
         public GameObject bubbleChatPanel;
         public GameObject bubbleRight;
+        public AudioClip buttonClickAudio;
 
         private GameObject chat;
         private Button askButton;
@@ -63,7 +64,9 @@ public class UIManager : MonoBehaviour
         yesButton = confirmation.transform.Find("YesButton").GetComponent<Button>();
         noButton = confirmation.transform.Find("NoButton").GetComponent<Button>();
 
-        AddHoverEffect(new List<GameObject> { guider.transform.Find("Armature").gameObject, askButton.gameObject, speakButton.gameObject, quizButton.gameObject, stopQuizButton.gameObject, mapButton.gameObject, yesButton.gameObject, noButton.gameObject });
+        AddButtonClickAudio(new List<GameObject> { askButton.gameObject, quizButton.gameObject, stopQuizButton.gameObject, mapButton.gameObject, yesButton.gameObject, noButton.gameObject });
+
+        AddHoverEffect(new List<GameObject> { askButton.gameObject, speakButton.gameObject, quizButton.gameObject, stopQuizButton.gameObject, mapButton.gameObject, yesButton.gameObject, noButton.gameObject });
 
 
         Debug.Log("Adding event listeners");
@@ -81,6 +84,20 @@ public class UIManager : MonoBehaviour
         // Confirmation event management 
         yesButton.onClick.AddListener(OnYesButtonClicked);
         noButton.onClick.AddListener(OnNoButtonClicked);
+    }
+
+    void AddButtonClickAudio(List<GameObject> uiElements = null)
+    {
+        foreach (GameObject uiElement in uiElements)
+        {
+            AudioSource audioSource = uiElement.AddComponent<AudioSource>();
+            audioSource.clip = buttonClickAudio;
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+
+            Button button = uiElement.GetComponent<Button>();
+            button.onClick.AddListener(() => audioSource.Play());
+        }
     }
 
     private void AddHoverEffect(List<GameObject> uiElements = null)
@@ -160,6 +177,17 @@ public class UIManager : MonoBehaviour
         private void OnSpeakButtonClicked()
         {
             Debug.Log("Speak button clicked");
+
+            if (!speakButton.gameObject.activeSelf)
+            {
+                return;
+            }
+
+            // Play microphone activated sound
+            AudioSource audioSource = speakButton.GetComponent<AudioSource>();
+            audioSource.Play();
+
+            // Toggle the audio capture
             Animator speakButtonAnimator = speakButton.GetComponent<Animator>();
             Image speakButtonImage = speakButton.GetComponent<Image>();
             if (!mainController.audioCapture.activeSelf)
@@ -272,6 +300,7 @@ public class UIManager : MonoBehaviour
         // Make the quiz panel invisible
         quizPanel.SetActive(false);
         quizButton.gameObject.SetActive(true);
+        quizButton.interactable = true;
         stopQuizButton.gameObject.SetActive(false);
     }
 
