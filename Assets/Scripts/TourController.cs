@@ -121,6 +121,7 @@ public class TourController : MonoBehaviour
 
         // Set the guider's new position
         guider.transform.position = guiderPositions[currentSpotIndex].position;
+        guider.transform.localScale = guiderPositions[currentSpotIndex].localScale;
 
         xROrigin.transform.LookAt(guider.transform);
 
@@ -129,6 +130,10 @@ public class TourController : MonoBehaviour
         directionToRig.y = 0;
         Quaternion rotation = Quaternion.LookRotation(directionToRig);
         guider.transform.rotation = rotation;
+
+        Vector3 newPosition = xROrigin.transform.position;
+        newPosition.y = guider.transform.position.y;
+        xROrigin.transform.position = newPosition;
 
         // Create the buttons for the new spot
         CreateButtons(currentSpotIndex);

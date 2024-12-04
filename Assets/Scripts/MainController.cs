@@ -27,6 +27,7 @@ public class MainController : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log("MainController Awake");
         if (InworldController.Instance.GameData == null)
         {
             InworldController.Instance.GameData = (InworldGameData) initialGameData;
@@ -35,7 +36,7 @@ public class MainController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("MainController Awake");
+        Debug.Log("MainController Start");
         stateManager = GetComponent<StateManager>();
         uiManager = GetComponent<UIManager>();
 

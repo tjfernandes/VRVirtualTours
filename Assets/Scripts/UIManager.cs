@@ -74,8 +74,16 @@ public class UIManager : MonoBehaviour
         askButton.onClick.AddListener(OnAskButtonClicked);
 
         // Quiz event management
-        quizButton.onClick.AddListener(() => InworldController.CurrentCharacter.SendTrigger("start_game", false));
-        stopQuizButton.onClick.AddListener(() => InworldController.CurrentCharacter.SendTrigger("forfeit_game", false));
+        if (this.GetComponent<QuizController>().Questions.Count > 0)
+        {
+            quizButton.onClick.AddListener(() => InworldController.CurrentCharacter.SendTrigger("start_game", false));
+            stopQuizButton.onClick.AddListener(() => InworldController.CurrentCharacter.SendTrigger("forfeit_game", false));
+        }
+        else
+        {
+            quizButton.gameObject.GetComponent<Button>().interactable = false;
+        }
+        
 
         speakButton.onClick.AddListener(OnSpeakButtonClicked);
 
@@ -256,7 +264,7 @@ public class UIManager : MonoBehaviour
         {
             if (askButton != null) askButton.interactable = true;
             if (speakButton != null) speakButton.interactable = true;
-            if (quizButton != null && stateManager.currentState != stateManager.gameState) quizButton.interactable = true;
+            if (quizButton != null && stateManager.currentState != stateManager.gameState && this.GetComponent<QuizController>().Questions.Count > 0) quizButton.interactable = true;
             if (stopQuizButton != null && stateManager.currentState == stateManager.gameState) stopQuizButton.interactable = true;
         }
 

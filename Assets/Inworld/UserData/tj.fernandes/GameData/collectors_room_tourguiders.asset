@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5abd9eaac9cc3e4585d7e8574c2511c, type: 3}
+  m_Name: collectors_room_tourguiders
+  m_EditorClassIdentifier: 
+  sceneFullName: workspaces/tourguiders/scenes/collectors_room
+  apiKey: OPhL9ATzComyZfnI7YwNQj0wpaxde1xW
+  apiSecret: 8wiotwdPLOaA4723JTXtIJaYZUEJiIIM9oYL9mRh6TRs8Bnr2NLbaEXyZAIQQM8a
+  characters:
+  - agentId: 
+    brainName: workspaces/tourguiders/characters/jose
+    givenName: "Anast\xE1cio Gon\xE7alves"
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/24672c86-5ae8-4939-b628-334408062283.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/24672c86-5ae8-4939-b628-334408062283_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/24672c86-5ae8-4939-b628-334408062283_posture.jpg
+      avatarImg: https://storage.googleapis.com/inworld-ai-usercontent-prod/2d_image/7a780cf5-20fd-4c6f-b12b-cfea4e0f1ca7.jpg
+      avatarImgOriginal: https://storage.googleapis.com/inworld-ai-usercontent-prod/2d_image/7a780cf5-20fd-4c6f-b12b-cfea4e0f1ca7-original.jpg
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
+  capabilities:
+    audio: 1
+    emotions: 1
+    interruptions: 1
+    narratedActions: 0
+    regenerateResponse: 1
+    text: 1
+    triggers: 1
+    phonemeInfo: 1
+    relations: 1
+    debugInfo: 0
+    multiAgent: 1
