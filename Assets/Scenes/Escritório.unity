@@ -1098,7 +1098,7 @@ PrefabInstance:
     - target: {fileID: 1808704156846354005, guid: 4625bd3fc44c549e7871911caeb010b1, type: 3}
       propertyPath: audioCapture
       value: 
-      objectReference: {fileID: 1980590986}
+      objectReference: {fileID: 917057533}
     - target: {fileID: 1808704156846354005, guid: 4625bd3fc44c549e7871911caeb010b1, type: 3}
       propertyPath: initialPanel
       value: 
@@ -1715,6 +1715,90 @@ MonoBehaviour:
   onPlayerSpeaks:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &917057533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917057535}
+  - component: {fileID: 917057534}
+  m_Layer: 0
+  m_Name: AudioCapture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &917057534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917057533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c7724d7f1e0394c9a79e9ff4fbd818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SamplingMode: 3
+  m_PlayerVolumeThreshold: 6
+  m_BufferSeconds: 1
+  m_AudioToPushCapacity: 100
+  m_DeviceName: 
+  m_DetectPlayerSpeaking: 1
+  m_SwitchingAudioTimer: 0.5
+  m_MutePlayerMic: 0
+  m_AudioEvent:
+    onStartCalibrating:
+      m_PersistentCalls:
+        m_Calls: []
+    onStopCalibrating:
+      m_PersistentCalls:
+        m_Calls: []
+    onRecordingStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onRecordingEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onPlayerStartSpeaking:
+      m_PersistentCalls:
+        m_Calls: []
+    onPlayerStopSpeaking:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 647546906}
+          m_TargetAssemblyTypeName: MainController, Assembly-CSharp
+          m_MethodName: OnPlayerStopSpeaking
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  m_AECResetDuration: 0.5
+--- !u!4 &917057535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917057533}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 753.6988, y: 458.8109, z: 60.351818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &959185024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1766,10 +1850,6 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_Name
       value: XR Device Simulator
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3374,90 +3454,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f3890ddd529843debb4ad34ae7abb6f, type: 3}
---- !u!1 &1980590986
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1980590988}
-  - component: {fileID: 1980590987}
-  m_Layer: 0
-  m_Name: AudioCapture
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1980590987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980590986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37c7724d7f1e0394c9a79e9ff4fbd818, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SamplingMode: 3
-  m_PlayerVolumeThreshold: 6
-  m_BufferSeconds: 1
-  m_AudioToPushCapacity: 100
-  m_DeviceName: 
-  m_DetectPlayerSpeaking: 1
-  m_SwitchingAudioTimer: 0.5
-  m_MutePlayerMic: 0
-  m_AudioEvent:
-    onStartCalibrating:
-      m_PersistentCalls:
-        m_Calls: []
-    onStopCalibrating:
-      m_PersistentCalls:
-        m_Calls: []
-    onRecordingStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onRecordingEnd:
-      m_PersistentCalls:
-        m_Calls: []
-    onPlayerStartSpeaking:
-      m_PersistentCalls:
-        m_Calls: []
-    onPlayerStopSpeaking:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 647546906}
-          m_TargetAssemblyTypeName: MainController, Assembly-CSharp
-          m_MethodName: OnPlayerStopSpeaking
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  m_AECResetDuration: 0.5
---- !u!4 &1980590988
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980590986}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 753.6988, y: 458.8109, z: 60.351818}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2021319816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3469,7 +3465,7 @@ PrefabInstance:
     - target: {fileID: 2395919966041133306, guid: f787cea5870c91b4ebe8571dc197a25f, type: 3}
       propertyPath: m_GameData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 92f753e5561294a00af22e1f7277e132, type: 2}
     - target: {fileID: 3331053244747017235, guid: f787cea5870c91b4ebe8571dc197a25f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3752,4 +3748,4 @@ SceneRoots:
   - {fileID: 2021319816}
   - {fileID: 1624074753}
   - {fileID: 1500028874}
-  - {fileID: 1980590988}
+  - {fileID: 917057535}

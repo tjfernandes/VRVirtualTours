@@ -1,3 +1,4 @@
+using System.Collections;
 using Inworld;
 using TMPro;
 using UnityEngine;
@@ -80,10 +81,8 @@ public class MapControlller : MonoBehaviour
 
     void LoadScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
-
-        InworldController.Instance.GameData = (InworldGameData) sceneGameDatas[sceneIndex];
-        InworldController.Instance.LoadData((InworldGameData) sceneGameDatas[sceneIndex]);
         InworldController.Instance.LoadScene(((InworldGameData) sceneGameDatas[sceneIndex]).sceneFullName);
+        SceneManager.LoadScene(sceneIndex);
     }
+
 }

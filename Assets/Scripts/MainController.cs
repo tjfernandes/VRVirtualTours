@@ -19,27 +19,19 @@ using Inworld.Sample.RPM;
 */
 public class MainController : MonoBehaviour
 {
-    public ScriptableObject initialGameData;
     public GameObject audioCapture;
     private StateManager stateManager;
     private UIManager uiManager;
-    
 
     void Awake()
     {
-        Debug.Log("MainController Awake");
-        if (InworldController.Instance.GameData == null)
-        {
-            InworldController.Instance.GameData = (InworldGameData) initialGameData;
-        }
+        stateManager = GetComponent<StateManager>();
+        uiManager = GetComponent<UIManager>();
     }
+    
 
     void Start()
     {
-        Debug.Log("MainController Start");
-        stateManager = GetComponent<StateManager>();
-        uiManager = GetComponent<UIManager>();
-
         StartCoroutine(GreetPlayer());
     }
 
