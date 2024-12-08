@@ -34,7 +34,7 @@ public class MapControlller : MonoBehaviour
 
         int totalPanels = SceneManager.sceneCountInBuildSettings;
 
-        for (int i = 0; i < totalPanels; i++)
+        for (int i = 1; i < totalPanels; i++)
         {
             string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
             
@@ -46,7 +46,7 @@ public class MapControlller : MonoBehaviour
 
             string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
 
-            Sprite sceneSprite = sceneSprites[i];
+            Sprite sceneSprite = sceneSprites[i-1]; // Subtract 1 because the first scene is the menu scene
 
             // Instantiate the panel object with listParent as its parent
             GameObject panelObj = Instantiate(scenePanelPrefab, listParent, false);
@@ -81,7 +81,7 @@ public class MapControlller : MonoBehaviour
 
     void LoadScene(int sceneIndex)
     {
-        InworldController.Instance.LoadScene(((InworldGameData) sceneGameDatas[sceneIndex]).sceneFullName);
+        InworldController.Instance.LoadScene(((InworldGameData) sceneGameDatas[sceneIndex-1]).sceneFullName);
         SceneManager.LoadScene(sceneIndex);
     }
 
