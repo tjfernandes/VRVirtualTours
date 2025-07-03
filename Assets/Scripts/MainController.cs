@@ -23,6 +23,9 @@ public class MainController : MonoBehaviour
     private StateManager stateManager;
     private UIManager uiManager;
 
+    private bool isMicToggleAllowed = true;
+    private float micToggleCooldown = 0.5f; // 500 milliseconds
+
     void Awake()
     {
         stateManager = GetComponent<StateManager>();
@@ -111,27 +114,29 @@ public class MainController : MonoBehaviour
         stateManager.SwitchState(stateManager.gameState);    
     }
 
+
+    private IEnumerator MicToggleCooldown()
+    {
+        isMicToggleAllowed = false;
+        yield return new WaitForSeconds(micToggleCooldown);
+        isMicToggleAllowed = true;
+    }
+
     public void OnPlayerStartSpeaking()
     {
-        if (audioCapture != null)
+        if (isMicToggleAllowed && audioCapture != null)
         {
             audioCapture.SetActive(true);
-        }
-        else
-        {
-            Debug.LogError("AudioCapture GameObject is not assigned.");
+            StartCoroutine(MicToggleCooldown());
         }
     }
 
     public void OnPlayerStopSpeaking()
     {
-        if (audioCapture != null)
+        if (isMicToggleAllowed && audioCapture != null)
         {
             audioCapture.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("AudioCapture GameObject is not assigned.");
+            StartCoroutine(MicToggleCooldown());
         }
     }
 

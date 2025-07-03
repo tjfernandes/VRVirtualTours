@@ -33,20 +33,23 @@ public class MapControlller : MonoBehaviour
         }
 
         int totalPanels = SceneManager.sceneCountInBuildSettings;
+        int spriteIndex = 0; // Counter for sprite array indexing
 
-        for (int i = 1; i < totalPanels; i++)
+        for (int i = 0; i < totalPanels; i++)
         {
             string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
-            
+
             // Check if the scene is not the current scene
             if (scenePath == SceneManager.GetActiveScene().path)
             {
+                spriteIndex++; // Skip the sprite for the current scene as well
                 continue;
             }
 
             string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
 
-            Sprite sceneSprite = sceneSprites[i-1]; // Subtract 1 because the first scene is the menu scene
+            Sprite sceneSprite = sceneSprites[spriteIndex]; // Use sprite index that corresponds to this scene
+            spriteIndex++; // Increment sprite counter for next scene
 
             // Instantiate the panel object with listParent as its parent
             GameObject panelObj = Instantiate(scenePanelPrefab, listParent, false);
@@ -81,7 +84,18 @@ public class MapControlller : MonoBehaviour
 
     void LoadScene(int sceneIndex)
     {
-        InworldController.Instance.LoadScene(((InworldGameData) sceneGameDatas[sceneIndex-1]).sceneFullName);
+        // Find the correct gameData index by counting non-current scenes before this index
+        int gameDataIndex = 0;
+        for (int i = 1; i < sceneIndex; i++)
+        {
+            string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
+            if (scenePath != SceneManager.GetActiveScene().path)
+            {
+                gameDataIndex++;
+            }
+        }
+        
+        InworldController.Instance.LoadScene(((InworldGameData) sceneGameDatas[gameDataIndex]).sceneFullName);
         SceneManager.LoadScene(sceneIndex);
     }
 
